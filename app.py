@@ -8,7 +8,7 @@ import joblib
 # =========================
 # CONFIG
 # =========================
-BASE_DIR = r"models"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 MODELS_DIR = os.path.join(BASE_DIR, "models")
 POINT_DIR  = os.path.join(MODELS_DIR, "point_models")
