@@ -580,5 +580,6 @@ st.download_button(
 )
 
 st.caption("Sheets داخل ملف Excel: Cases (الحالات) + Meters (ترتيب العدادات) + TopRows (أعلى قراءات خطورة - مختصرة).")
+
 st.markdown("---")
-st.markdown("👨‍💻 **تطوير :** مشهور العباس | 00966553339838 | ")
+st.markdown("👨‍💻 Developed by: Mashhour Alabbas | 2026")
