@@ -8,7 +8,7 @@ import joblib
 # =========================
 # CONFIG
 # =========================
-BASE_DIR = r"C:\Users\78598\Documents\anom"
+BASE_DIR = r"models"
 
 MODELS_DIR = os.path.join(BASE_DIR, "models")
 POINT_DIR  = os.path.join(MODELS_DIR, "point_models")
