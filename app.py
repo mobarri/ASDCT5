@@ -568,8 +568,7 @@ st.dataframe(filtered, use_container_width=True)
 # Quick meter ranking (compact)
 st.subheader("ملخص العدادات الأعلى خطورة (Top meters)")
 st.dataframe(meters_ranked.head(50), use_container_width=True)
-st.markdown("---")
-st.markdown("👨‍💻 Developed by: Mashhour Alabbas | 2026")
+
 
 # Export
 st.subheader("تصدير النتائج")
@@ -582,4 +581,9 @@ st.download_button(
 )
 
 st.caption("Sheets داخل ملف Excel: Cases (الحالات) + Meters (ترتيب العدادات) + TopRows (أعلى قراءات خطورة - مختصرة).")
+if uploaded is None:
+    st.info("ارفع ملف Excel يحتوي الأعمدة: Meter Number, Meter Datetime, Office, V1..V3, A1..A3")
 
+    st.markdown("---")
+    st.markdown("👨‍💻 Developed by: Mashhour Alabbas | 2026")
+    st.stop()
