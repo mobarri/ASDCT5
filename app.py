@@ -9,7 +9,16 @@ import joblib
 # CONFIG
 # =========================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# =========================
+# Template download
+# =========================
+TEMPLATE_PATH = os.path.join(BASE_DIR, "Data Template.xlsx")
 
+def get_template_bytes() -> bytes:
+    if os.path.exists(TEMPLATE_PATH):
+        with open(TEMPLATE_PATH, "rb") as f:
+            return f.read()
+    return b""
 MODELS_DIR = os.path.join(BASE_DIR, "models")
 POINT_DIR  = os.path.join(MODELS_DIR, "point_models")
 DIST_DIR   = os.path.join(MODELS_DIR, "distribution_models")
@@ -494,7 +503,20 @@ min_period_points = st.sidebar.slider("أقل عدد نقاط لتكوين فت�
 
 st.sidebar.markdown("---")
 st.sidebar.caption("ملاحظة: إذا الملف كبير جدًا، يمكن إلغاء استخراج الفترات والاكتفاء بأعلى وقت خطورة لكل عداد.")
+st.subheader("قالب الإدخال")
+st.caption("حمّل القالب، عبّيه بالبيانات المطلوبة، ثم ارفعه هنا للتحليل.")
 
+template_bytes = get_template_bytes()
+if template_bytes:
+    st.download_button(
+        label="📥 تحميل قالب Excel (Data Template)",
+        data=template_bytes,
+        file_name="Data_Template.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        use_container_width=True
+    )
+else:
+    st.warning("لم يتم العثور على ملف القالب داخل المشروع. تأكد أنه موجود باسم: Data Template.xlsx")
 uploaded = st.file_uploader("ارفع ملف البيانات (.xlsx)", type=["xlsx"])
 
 if uploaded is None:
